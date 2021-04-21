@@ -21,5 +21,9 @@
     <fragment
         android:id="@+id/animationFragment"
         android:name="com.onix.postcard.animation.AnimationFragment"
-        android:label="AnimationFragment" />
+        android:label="AnimationFragment" >
+        <argument
+            android:name="settingModel"
+            app:argType="com.onix.postcard.setting.SettingModel" />
+    </fragment>
 </navigation>

@@ -19,10 +19,24 @@
     </style>
 
     <style name="gradientRoundButton" parent="baseRoundButton">
-        <item name="android:background">@drawable/gradient_background</item>
+        <item name="android:background">@drawable/gradient_button_background</item>
     </style>
 
     <style name="solidRoundButton" parent="baseRoundButton">
-        <item name="android:background">@drawable/solid_background</item>
+        <item name="android:background">@drawable/solid_button_background</item>
+    </style>
+
+    <style name="settingTextInputLayoutStyle">
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="hintEnabled">false</item>
+        <item name="height">20dp</item>
+    </style>
+
+    <style name="settingEditTextStyle">
+        <item name="android:background">@drawable/edit_text_background</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:textSize">13sp</item>
+
     </style>
 </resources>

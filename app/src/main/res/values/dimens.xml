@@ -5,4 +5,8 @@
     <dimen name="settings_button_height">40dp</dimen>
     <dimen name="settings_corner_radius">20dp</dimen>
     <dimen name="settings_stroke_width">3dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="default_padding">16dp</dimen>
+    <dimen name="setting_text_margin">8dp</dimen>
+    <dimen name="edit_text_stroke">1dp</dimen>
 </resources>
