@@ -12,4 +12,5 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
     }
+
 }

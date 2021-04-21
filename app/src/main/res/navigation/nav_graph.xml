@@ -3,11 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/stubFragment">
+    app:startDestination="@id/settingFragment">
 
     <fragment
         android:id="@+id/stubFragment"
         android:name="com.onix.postcard.stub.StubFragment"
         android:label="fragment_stub"
         tools:layout="@layout/fragment_stub" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.onix.postcard.setting.SettingFragment"
+        android:label="SettingFragment" >
+        <action
+            android:id="@+id/action_settingFragment_to_animationFragment"
+            app:destination="@id/animationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/animationFragment"
+        android:name="com.onix.postcard.animation.AnimationFragment"
+        android:label="AnimationFragment" />
 </navigation>

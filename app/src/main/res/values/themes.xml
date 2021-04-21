@@ -1,16 +1,28 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
     <style name="Theme.PostCard" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="baseRoundButton">
+        <item name="android:width">@dimen/settings_button_width</item>
+        <item name="android:textSize">@dimen/settings_button_text_size</item>
+        <item name="android:layout_height">@dimen/settings_button_height</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="gradientRoundButton" parent="baseRoundButton">
+        <item name="android:background">@drawable/gradient_background</item>
+    </style>
+
+    <style name="solidRoundButton" parent="baseRoundButton">
+        <item name="android:background">@drawable/solid_background</item>
     </style>
 </resources>
