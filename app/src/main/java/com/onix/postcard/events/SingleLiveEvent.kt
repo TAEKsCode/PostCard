@@ -1,4 +1,4 @@
-package com.onix.postcard
+package com.onix.postcard.events
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData

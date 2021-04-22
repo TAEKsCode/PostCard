@@ -15,7 +15,6 @@
         <item name="android:textSize">@dimen/settings_button_text_size</item>
         <item name="android:layout_height">@dimen/settings_button_height</item>
         <item name="backgroundTint">@null</item>
-        <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
 
     <style name="gradientRoundButton" parent="baseRoundButton">
@@ -34,6 +33,7 @@
     </style>
 
     <style name="settingEditTextStyle">
+        <item name="android:maxLines">1</item>
         <item name="android:background">@drawable/edit_text_background</item>
         <item name="android:padding">@dimen/default_padding</item>
         <item name="android:textSize">13sp</item>

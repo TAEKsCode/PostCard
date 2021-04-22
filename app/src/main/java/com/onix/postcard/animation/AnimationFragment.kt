@@ -13,6 +13,7 @@ class AnimationFragment : Fragment() {
 
     private lateinit var binding: FragmentAnimationBinding
     private val args: AnimationFragmentArgs by navArgs()
+
     private val viewModel: AnimationViewModel by viewModels { AnimationViewModelFactory(args.settingModel) }
 
     override fun onCreateView(

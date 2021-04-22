@@ -10,6 +10,16 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+
+    signingConfigs {
+        release {
+            storeFile file("postcard")
+            storePassword 'android'
+            keyAlias 'android'
+            keyPassword 'android'
+        }
+    }
+
     defaultConfig {
         applicationId "com.onix.postcard"
         minSdkVersion 26
@@ -26,8 +36,17 @@ android {
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "FOO_STRING", "\"flowers\""
+        }
+        debug {
+            signingConfig signingConfigs.release
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "FOO_STRING", "\"debug\""
         }
     }
     compileOptions {

@@ -4,12 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDirections
-import com.onix.postcard.SingleLiveEvent
+import com.onix.postcard.commons.Uroboros
+import com.onix.postcard.events.SingleLiveEvent
+import com.onix.postcard.sources.imagesource.impl.AssetsImageSource
 
-class SettingViewModel : ViewModel() {
+class SettingViewModel(imageSource: AssetsImageSource) : ViewModel() {
     private val _navigationLiveEvent = SingleLiveEvent<NavDirections>()
     val navigationLiveEvent: LiveData<NavDirections> = _navigationLiveEvent
+
     val model = SettingModel()
+
+    private val uroborosIterator = Uroboros(imageSource.list(), imageSource.list().first())
 
     private val _errorName = MutableLiveData<Boolean>()
     val errorName: LiveData<Boolean> = _errorName
@@ -20,6 +25,9 @@ class SettingViewModel : ViewModel() {
     private val _errorText = MutableLiveData<Boolean>()
     val errorText: LiveData<Boolean> = _errorText
 
+    init {
+        model.imageName = uroborosIterator.get()
+    }
 
     fun showAnimationFragment() {
         model.apply {
@@ -32,4 +40,13 @@ class SettingViewModel : ViewModel() {
             }
         }
     }
+
+    fun getNextBackground() {
+        model.imageName = uroborosIterator.next().get()
+    }
+
+    fun getPreviousBackground() {
+        model.imageName = uroborosIterator.prev().get()
+    }
+
 }

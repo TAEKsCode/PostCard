@@ -12,5 +12,4 @@ class AnimationViewModelFactory(private val model: SettingModel) : ViewModelProv
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-
 }

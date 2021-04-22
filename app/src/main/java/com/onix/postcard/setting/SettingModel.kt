@@ -10,7 +10,8 @@ import kotlinx.android.parcel.Parcelize
 data class SettingModel(
     private var _name: String = "",
     private var _title: String = "",
-    private var _text: String = ""
+    private var _text: String = "",
+    private var _imageName: String = ""
 ) : BaseObservable(), Parcelable {
 
     @get:Bindable
@@ -37,6 +38,15 @@ data class SettingModel(
             _text = value
             field = value
             notifyPropertyChanged(BR.text)
+        }
+
+
+    @get:Bindable
+    var imageName: String = _imageName
+        set(value) {
+            _imageName = value
+            field = value
+            notifyPropertyChanged(BR.imageName)
         }
 
     fun isError() = _name.isEmpty() || _title.isEmpty() || _text.isEmpty()

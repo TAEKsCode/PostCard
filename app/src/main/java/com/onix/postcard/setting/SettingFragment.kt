@@ -8,12 +8,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import com.onix.postcard.BuildConfig
 import com.onix.postcard.databinding.FragmentSettingBinding
+import com.onix.postcard.sources.imagesource.impl.AssetsImageSource
 
 class SettingFragment : Fragment() {
 
-    private val viewModel: SettingViewModel by viewModels()
     private lateinit var binding: FragmentSettingBinding
+    private val viewModel: SettingViewModel by viewModels { SettingViewModelFactory(
+        AssetsImageSource(requireContext(), BuildConfig.FOO_STRING)
+    ) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
