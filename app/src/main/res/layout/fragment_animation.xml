@@ -10,45 +10,65 @@
             type="com.onix.postcard.animation.AnimationViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layoutDescription="@xml/fragment_animation_xml_constraintlayout_scene"
         tools:context=".animation.AnimationFragment">
 
+        <ImageView
+            android:id="@+id/animationBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop"
+            app:backgroundPath="@{viewModel.model.backgroundName}"
+            app:source="@{viewModel.backgroundSource}" />
+
         <TextView
-            android:id="@+id/animationName"
-            android:layout_width="0dp"
+            android:id="@+id/animationText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
-            android:text="@{viewModel.model.name}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:multilineText="@{viewModel.model.text}"
+            tools:text="texttexttext" />
+
+        <TextView
+            android:id="@+id/animationName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:text="@{viewModel.model.name}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:text="name" />
 
         <TextView
             android:id="@+id/animationTitle"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
             android:text="@{viewModel.model.title}"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/animationName"
-            tools:text="name" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="test text" />
 
+        <ImageView
+            android:id="@+id/animationImage"
+            android:layout_width="@dimen/setting_image_size"
+            android:layout_height="@dimen/setting_image_size"
+            android:importantForAccessibility="no"
+            app:imagePath="@{viewModel.model.imageName}"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:source="@{viewModel.imageSource}"
+            tools:layout_editor_absoluteX="155dp"
+            tools:src="@drawable/ic_launcher_foreground" />
 
-        <TextView
-            android:id="@+id/animationText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
-            android:text="@{viewModel.model.text}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/animationTitle"
-            tools:text="name" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

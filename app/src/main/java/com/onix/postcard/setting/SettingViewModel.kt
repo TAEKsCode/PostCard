@@ -8,13 +8,16 @@ import com.onix.postcard.commons.Uroboros
 import com.onix.postcard.events.SingleLiveEvent
 import com.onix.postcard.sources.imagesource.impl.AssetsImageSource
 
-class SettingViewModel(imageSource: AssetsImageSource) : ViewModel() {
+class SettingViewModel(val imageSource: AssetsImageSource, val backgroundSource: AssetsImageSource) :
+    ViewModel() {
     private val _navigationLiveEvent = SingleLiveEvent<NavDirections>()
     val navigationLiveEvent: LiveData<NavDirections> = _navigationLiveEvent
 
-    val model = SettingModel()
+    val model = SettingModel("Name", "Title", "Texttexttexttext")
 
-    private val uroborosIterator = Uroboros(imageSource.list(), imageSource.list().first())
+    private val imagesIterator = Uroboros(imageSource.list(), imageSource.list().first())
+    private val backgroundsIterator =
+        Uroboros(backgroundSource.list(), backgroundSource.list().first())
 
     private val _errorName = MutableLiveData<Boolean>()
     val errorName: LiveData<Boolean> = _errorName
@@ -26,7 +29,8 @@ class SettingViewModel(imageSource: AssetsImageSource) : ViewModel() {
     val errorText: LiveData<Boolean> = _errorText
 
     init {
-        model.imageName = uroborosIterator.get()
+        model.imageName = imagesIterator.get()
+        model.backgroundName = backgroundsIterator.get()
     }
 
     fun showAnimationFragment() {
@@ -41,12 +45,16 @@ class SettingViewModel(imageSource: AssetsImageSource) : ViewModel() {
         }
     }
 
-    fun getNextBackground() {
-        model.imageName = uroborosIterator.next().get()
+    fun getNextImage() {
+        model.imageName = imagesIterator.next().get()
     }
 
-    fun getPreviousBackground() {
-        model.imageName = uroborosIterator.prev().get()
+    fun getPreviousImage() {
+        model.imageName = imagesIterator.prev().get()
+    }
+
+    fun getNextBackground() {
+        model.backgroundName = backgroundsIterator.next().get()
     }
 
 }

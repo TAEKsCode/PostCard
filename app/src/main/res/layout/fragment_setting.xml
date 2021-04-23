@@ -22,6 +22,16 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
+        <ImageView
+            android:id="@+id/settingBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:importantForAccessibility="no"
+            android:onClick="@{() -> viewModel.getNextBackground()}"
+            android:scaleType="centerCrop"
+            app:backgroundPath="@{viewModel.model.backgroundName}"
+            app:source="@{viewModel.backgroundSource}" />
+
         <TextView
             android:id="@+id/settingNameLabel"
             android:layout_width="wrap_content"
@@ -139,7 +149,7 @@
             android:background="@drawable/ic_arrow_right"
             android:foreground="@drawable/ripple_arrow_right"
             android:importantForAccessibility="no"
-            android:onClick="@{() -> viewModel.getNextBackground()}"
+            android:onClick="@{() -> viewModel.getNextImage()}"
             app:layout_constraintBottom_toBottomOf="@+id/settingAvatarImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/settingAvatarImage"
@@ -152,7 +162,7 @@
             android:background="@drawable/ic_arrow_left"
             android:foreground="@drawable/ripple_arrow_left"
             android:importantForAccessibility="no"
-            android:onClick="@{() -> viewModel.getPreviousBackground()}"
+            android:onClick="@{() -> viewModel.getPreviousImage()}"
             app:layout_constraintBottom_toBottomOf="@+id/settingAvatarImage"
             app:layout_constraintEnd_toStartOf="@+id/settingAvatarImage"
             app:layout_constraintStart_toStartOf="parent"
@@ -160,14 +170,15 @@
 
         <ImageView
             android:id="@+id/settingAvatarImage"
-            setImageFromAssets="@{viewModel.model.imageName}"
             android:layout_width="@dimen/setting_image_size"
             android:layout_height="@dimen/setting_image_size"
             android:layout_marginTop="@dimen/default_margin"
             android:importantForAccessibility="no"
+            app:imagePath="@{viewModel.model.imageName}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/settingLaunch"
+            app:source="@{viewModel.imageSource}"
             tools:src="@mipmap/ic_launcher" />
 
 

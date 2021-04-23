@@ -3,7 +3,9 @@ package com.onix.postcard.sources.imagesource.impl
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
 import com.onix.postcard.sources.imagesource.ImageSource
+import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
 
@@ -18,7 +20,7 @@ class AssetsImageSource @Throws(FileNotFoundException::class) constructor(
     override fun getBitmap(name: String): Bitmap {
         val resource =
             try {
-                context.assets.open(folderPath.plus("/").plus(name))
+                context.assets.open(folderPath.plus(File.separator).plus(name))
             } catch (exc: IOException) {
                 throw FileNotFoundException("No such file at $name")
             }
@@ -29,5 +31,16 @@ class AssetsImageSource @Throws(FileNotFoundException::class) constructor(
 
     override fun list(): ArrayList<String> {
         return listOfPaths
+    }
+
+    override fun getDrawable(name: String): Drawable {
+        val resource =
+            try {
+                context.assets.open(folderPath.plus(File.separator).plus(name))
+            } catch (exc: IOException) {
+                throw FileNotFoundException("No such file at $name")
+            }
+        return Drawable.createFromStream(resource, null)
+            ?: throw Exception("Can't convert file $name to drawable")
     }
 }

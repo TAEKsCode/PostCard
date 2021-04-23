@@ -7,14 +7,22 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.onix.postcard.BuildConfig
 import com.onix.postcard.databinding.FragmentAnimationBinding
+import com.onix.postcard.sources.imagesource.impl.AssetsImageSource
 
 class AnimationFragment : Fragment() {
 
     private lateinit var binding: FragmentAnimationBinding
     private val args: AnimationFragmentArgs by navArgs()
 
-    private val viewModel: AnimationViewModel by viewModels { AnimationViewModelFactory(args.settingModel) }
+    private val viewModel: AnimationViewModel by viewModels {
+        AnimationViewModelFactory(
+            args.settingModel,
+            AssetsImageSource(requireContext(), BuildConfig.IMAGES_PATH),
+            AssetsImageSource(requireContext(), BuildConfig.BACKGROUND_PATH)
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

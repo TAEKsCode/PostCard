@@ -11,7 +11,8 @@ data class SettingModel(
     private var _name: String = "",
     private var _title: String = "",
     private var _text: String = "",
-    private var _imageName: String = ""
+    private var _imageName: String = "",
+    private var _backgroundName: String = ""
 ) : BaseObservable(), Parcelable {
 
     @get:Bindable
@@ -49,6 +50,15 @@ data class SettingModel(
             notifyPropertyChanged(BR.imageName)
         }
 
-    fun isError() = _name.isEmpty() || _title.isEmpty() || _text.isEmpty()
+    @get:Bindable
+    var backgroundName: String = _backgroundName
+        set(value) {
+            _backgroundName = value
+            field = value
+            notifyPropertyChanged(BR.backgroundName)
+        }
+
+    fun isError() =
+        _name.isEmpty() || _title.isEmpty() || _text.isEmpty()
 
 }

@@ -16,7 +16,8 @@ class SettingFragment : Fragment() {
 
     private lateinit var binding: FragmentSettingBinding
     private val viewModel: SettingViewModel by viewModels { SettingViewModelFactory(
-        AssetsImageSource(requireContext(), BuildConfig.FOO_STRING)
+        AssetsImageSource(requireContext(), BuildConfig.IMAGES_PATH),
+        AssetsImageSource(requireContext(), BuildConfig.BACKGROUND_PATH)
     ) }
 
     override fun onCreateView(

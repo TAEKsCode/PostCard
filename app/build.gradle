@@ -39,14 +39,15 @@ android {
             signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "FOO_STRING", "\"flowers\""
+            buildConfigField "String", "IMAGES_PATH", "\"flowers\""
+            buildConfigField "String", "BACKGROUND_PATH", "\"backgrounds\""
         }
         debug {
             signingConfig signingConfigs.release
-            debuggable true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "FOO_STRING", "\"debug\""
+            buildConfigField "String", "IMAGES_PATH", "\"debug\""
+            buildConfigField "String", "BACKGROUND_PATH", "\"backgrounds\""
         }
     }
     compileOptions {
