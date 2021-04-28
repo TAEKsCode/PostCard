@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="com.onix.postcard.setting.SettingViewModel" />
+            type="com.onix.postcard.ui.setting.SettingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".setting.SettingFragment">
+        tools:context=".ui.setting.SettingFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/settingGuideline"
@@ -29,8 +29,7 @@
             android:importantForAccessibility="no"
             android:onClick="@{() -> viewModel.getNextBackground()}"
             android:scaleType="centerCrop"
-            app:backgroundPath="@{viewModel.model.backgroundName}"
-            app:source="@{viewModel.backgroundSource}" />
+            android:src="@{viewModel.model.backgroundDrawable}" />
 
         <TextView
             android:id="@+id/settingNameLabel"
@@ -174,11 +173,10 @@
             android:layout_height="@dimen/setting_image_size"
             android:layout_marginTop="@dimen/default_margin"
             android:importantForAccessibility="no"
-            app:imagePath="@{viewModel.model.imageName}"
+            android:src="@{viewModel.model.imageDrawable}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/settingLaunch"
-            app:source="@{viewModel.imageSource}"
             tools:src="@mipmap/ic_launcher" />
 
 

@@ -1,18 +1,20 @@
-package com.onix.postcard.setting
+package com.onix.postcard.ui.setting
 
+import android.graphics.drawable.Drawable
 import android.os.Parcelable
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.onix.postcard.BR
 import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
 @Parcelize
 data class SettingModel(
     private var _name: String = "",
     private var _title: String = "",
     private var _text: String = "",
-    private var _imageName: String = "",
-    private var _backgroundName: String = ""
+    private var _imageDrawable: @RawValue Drawable,
+    private var _backgroundDrawable: @RawValue Drawable
 ) : BaseObservable(), Parcelable {
 
     @get:Bindable
@@ -43,19 +45,19 @@ data class SettingModel(
 
 
     @get:Bindable
-    var imageName: String = _imageName
+    var imageDrawable: Drawable = _imageDrawable
         set(value) {
-            _imageName = value
+            _imageDrawable = value
             field = value
-            notifyPropertyChanged(BR.imageName)
+            notifyPropertyChanged(BR.imageDrawable)
         }
 
     @get:Bindable
-    var backgroundName: String = _backgroundName
+    var backgroundDrawable: Drawable = _backgroundDrawable
         set(value) {
-            _backgroundName = value
+            _backgroundDrawable = value
             field = value
-            notifyPropertyChanged(BR.backgroundName)
+            notifyPropertyChanged(BR.backgroundDrawable)
         }
 
     fun isError() =

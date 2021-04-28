@@ -1,15 +1,15 @@
-package com.onix.postcard.sources.imagesource.impl
+package com.onix.postcard.data.source.image.impl
 
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
-import com.onix.postcard.sources.imagesource.ImageSource
+import com.onix.postcard.data.source.image.ImageSource
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
 
-class AssetsImageSource @Throws(FileNotFoundException::class) constructor(
+open class AssetsImageSource constructor(
     private val context: Context,
     private val folderPath: String
 ) : ImageSource {

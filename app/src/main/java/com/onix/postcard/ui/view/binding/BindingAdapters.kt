@@ -1,27 +1,15 @@
-package com.onix.postcard.bindingadapter
+package com.onix.postcard.ui.view.binding
 
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputLayout
 import com.onix.postcard.R
-import com.onix.postcard.sources.imagesource.impl.AssetsImageSource
 
 @BindingAdapter("errorMessage")
 fun TextInputLayout.errorMessage(errorState: Boolean) {
     error = if (errorState) {
         resources.getString(R.string.field_is_empty)
     } else ""
-}
-
-@BindingAdapter("imagePath", "source")
-fun ImageView.setImageFromAssets(imageName: String, source: AssetsImageSource) {
-    setImageDrawable(source.getDrawable(imageName))
-}
-
-@BindingAdapter("backgroundPath", "source")
-fun ImageView.setBackgroundFromAssets(imageName: String, source: AssetsImageSource) {
-    setImageDrawable(source.getDrawable(imageName))
 }
 
 @BindingAdapter("multilineText")

@@ -7,23 +7,25 @@
 
     <fragment
         android:id="@+id/stubFragment"
-        android:name="com.onix.postcard.stub.StubFragment"
+        android:name="com.onix.postcard.ui.stub.PermissionFragment"
         android:label="fragment_stub"
         tools:layout="@layout/fragment_stub" />
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.onix.postcard.setting.SettingFragment"
-        android:label="SettingFragment" >
+        android:name="com.onix.postcard.ui.setting.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting">
         <action
             android:id="@+id/action_settingFragment_to_animationFragment"
             app:destination="@id/animationFragment" />
     </fragment>
     <fragment
         android:id="@+id/animationFragment"
-        android:name="com.onix.postcard.animation.AnimationFragment"
-        android:label="AnimationFragment" >
+        android:name="com.onix.postcard.ui.animation.AnimationFragment"
+        android:label="AnimationFragment"
+        tools:layout="@layout/fragment_animation">
         <argument
             android:name="settingModel"
-            app:argType="com.onix.postcard.setting.SettingModel" />
+            app:argType="com.onix.postcard.ui.setting.SettingModel" />
     </fragment>
 </navigation>

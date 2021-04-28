@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.onix.postcard.animation.AnimationViewModel" />
+            type="com.onix.postcard.ui.animation.AnimationViewModel" />
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutDescription="@xml/fragment_animation_xml_constraintlayout_scene"
-        tools:context=".animation.AnimationFragment">
+        tools:context=".ui.animation.AnimationFragment">
 
         <ImageView
             android:id="@+id/animationBackground"
@@ -23,8 +23,7 @@
             android:layout_height="match_parent"
             android:importantForAccessibility="no"
             android:scaleType="centerCrop"
-            app:backgroundPath="@{viewModel.model.backgroundName}"
-            app:source="@{viewModel.backgroundSource}" />
+            android:src="@{viewModel.model.backgroundDrawable}" />
 
         <TextView
             android:id="@+id/animationText"
@@ -52,21 +51,21 @@
             android:id="@+id/animationTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.model.title}"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="test text" />
+        
+        <!--            android:text="@{viewModel.model.title}"-->
 
         <ImageView
             android:id="@+id/animationImage"
             android:layout_width="@dimen/setting_image_size"
             android:layout_height="@dimen/setting_image_size"
             android:importantForAccessibility="no"
-            app:imagePath="@{viewModel.model.imageName}"
+            android:src="@{viewModel.model.imageDrawable}"
             app:layout_constraintTop_toBottomOf="parent"
-            app:source="@{viewModel.imageSource}"
             tools:layout_editor_absoluteX="155dp"
             tools:src="@drawable/ic_launcher_foreground" />
 

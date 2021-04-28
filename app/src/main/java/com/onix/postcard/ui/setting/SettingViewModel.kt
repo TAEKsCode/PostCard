@@ -1,23 +1,25 @@
-package com.onix.postcard.setting
+package com.onix.postcard.ui.setting
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import com.onix.postcard.commons.Uroboros
-import com.onix.postcard.events.SingleLiveEvent
-import com.onix.postcard.sources.imagesource.impl.AssetsImageSource
+import com.onix.postcard.arch.livecycler.SingleLiveEvent
+import com.onix.postcard.data.repository.impl.ImplImageRepository
+import kotlinx.coroutines.launch
 
-class SettingViewModel(val imageSource: AssetsImageSource, val backgroundSource: AssetsImageSource) :
-    ViewModel() {
+class SettingViewModel(
+    private val repository: ImplImageRepository
+) : ViewModel() {
+
     private val _navigationLiveEvent = SingleLiveEvent<NavDirections>()
     val navigationLiveEvent: LiveData<NavDirections> = _navigationLiveEvent
 
-    val model = SettingModel("Name", "Title", "Texttexttexttext")
-
-    private val imagesIterator = Uroboros(imageSource.list(), imageSource.list().first())
+    private val imagesIterator = Uroboros(repository.imagesList(), repository.imagesList().first())
     private val backgroundsIterator =
-        Uroboros(backgroundSource.list(), backgroundSource.list().first())
+        Uroboros(repository.backgroundsList(), repository.backgroundsList().first())
 
     private val _errorName = MutableLiveData<Boolean>()
     val errorName: LiveData<Boolean> = _errorName
@@ -28,9 +30,12 @@ class SettingViewModel(val imageSource: AssetsImageSource, val backgroundSource:
     private val _errorText = MutableLiveData<Boolean>()
     val errorText: LiveData<Boolean> = _errorText
 
+    val model: SettingModel
+
     init {
-        model.imageName = imagesIterator.get()
-        model.backgroundName = backgroundsIterator.get()
+        val backgroundDrawable = repository.getBackground(backgroundsIterator.get())
+        val imageDrawable = repository.getImage(imagesIterator.get())
+        model = SettingModel("Name", "Title", "Texttexttexttext", imageDrawable, backgroundDrawable)
     }
 
     fun showAnimationFragment() {
@@ -46,15 +51,22 @@ class SettingViewModel(val imageSource: AssetsImageSource, val backgroundSource:
     }
 
     fun getNextImage() {
-        model.imageName = imagesIterator.next().get()
+        viewModelScope.launch {
+            model.imageDrawable = repository.getImage(imagesIterator.next().get())
+        }
     }
 
     fun getPreviousImage() {
-        model.imageName = imagesIterator.prev().get()
+        viewModelScope.launch {
+            model.imageDrawable = repository.getImage(imagesIterator.prev().get())
+        }
     }
 
     fun getNextBackground() {
-        model.backgroundName = backgroundsIterator.next().get()
+        viewModelScope.launch {
+            model.backgroundDrawable =
+                repository.getBackground(backgroundsIterator.next().get())
+        }
     }
 
 }

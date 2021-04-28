@@ -1,4 +1,4 @@
-package com.onix.postcard.activity
+package com.onix.postcard.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding: ActivityMainBinding = setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
+        //AppInitializer.getInstance(this).initializeComponent(KoinInitializer::class.java)
     }
 
 }

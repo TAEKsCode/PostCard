@@ -1,24 +1,19 @@
-package com.onix.postcard.setting
+package com.onix.postcard.ui.setting
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import com.onix.postcard.BuildConfig
 import com.onix.postcard.databinding.FragmentSettingBinding
-import com.onix.postcard.sources.imagesource.impl.AssetsImageSource
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingFragment : Fragment() {
 
     private lateinit var binding: FragmentSettingBinding
-    private val viewModel: SettingViewModel by viewModels { SettingViewModelFactory(
-        AssetsImageSource(requireContext(), BuildConfig.IMAGES_PATH),
-        AssetsImageSource(requireContext(), BuildConfig.BACKGROUND_PATH)
-    ) }
+    private val viewModel: SettingViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +28,7 @@ class SettingFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
         viewModel.navigationLiveEvent.observe(viewLifecycleOwner, ::navigate)
+
     }
 
     private fun navigate(direction: NavDirections) {
